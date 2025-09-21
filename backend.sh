@@ -60,6 +60,7 @@ curl -o /tmp/backend.zip https://expense-joindevops.s3.us-east-1.amazonaws.com/e
 VALIDATE $? "Downloading backend"
 
 cd /app
+rm -rf /app/*
 
 unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "unzip backend"
@@ -80,11 +81,11 @@ VALIDATE $? "Setting up the transaction schema and tables"
 systemctl daemon-reload &>>$LOG_FILE_NAME
 VALIDATE $? "Daemon Reload"
 
-systemctl start backend &>>$LOG_FILE_NAME
+systemctl enable backend &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling backend"
 
-systemctl start backend &>>$LOG_FILE_NAME
-VALIDATE $? "starting backend"
+systemctl restart backend &>>$LOG_FILE_NAME
+VALIDATE $? "restarting backend"
 
 
 
