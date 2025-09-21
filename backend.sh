@@ -73,8 +73,10 @@ VALIDATE $? "Setting up the transaction schema and tables"
 
 systemctl daemon-reload &>>$LOG_FILE_NAME
 VALIDATE $? "Daemon Reload"
+
 systemctl start backend &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling backend"
+
 systemctl start backend &>>$LOG_FILE_NAME
 VALIDATE $? "starting backend"
 
